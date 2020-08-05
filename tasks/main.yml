@@ -35,7 +35,7 @@
 
 - name: Add additional sudoers Permissions.
   template:
-    dest: "/etc/sudoers.d/{{ item.filename}}"
+    dest: "/etc/sudoers.d/{{ item.filename }}"
     src: custom_sudoers.j2
     mode: 0440
     owner: root
@@ -47,7 +47,7 @@
 
 - name: Remove additional sudoers Permissions.
   file:
-    path: "/etc/sudoers.d/{{ item.filename}}"
+    path: "/etc/sudoers.d/{{ item.filename }}"
     state: "{{ item.state }}"
   when: sudo_sudoers_config is defined and item.state == "absent"
   with_items:
