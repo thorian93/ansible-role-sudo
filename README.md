@@ -1,6 +1,6 @@
 # Ansible Role: Sudo
 
-This role configures sudo on Debian/Ubuntu, RHEL/CentOS, Fedora and openSUSE/SLES servers.
+This role configures sudo on Debian/Ubuntu, RHEL/CentOS, Fedora and opensuse/SLES servers.
 
 ## Here be Dragons!
 
@@ -69,7 +69,7 @@ None.
 
 This role ensures that it is not used against unsupported or untested operating systems by checking, if the right distribution name and major version number are present in a dedicated variable named like `<role-name>_stable_os`. You can find the variable in the role's default variable file at `defaults/main.yml`:
 
-    common_stable_os:
+    role_stable_os:
       - Debian 10
       - Ubuntu 18
       - CentOS 7
