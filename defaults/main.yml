@@ -17,11 +17,11 @@ sudo_stable_os:
 
 ## Custom sudoers config can be defined on several levels and will be concatenated
 sudo_sudoers_config_global: []
-  # - filename:
-  #   state: present
-  #   lines:
-  #     - "root	ALL=(ALL:ALL) ALL"
-  #     - "john	ALL=(ALL:ALL) ALL"
+# - filename:
+#   state: present
+#   lines:
+#     - "root	ALL=(ALL:ALL) ALL"
+#     - "john	ALL=(ALL:ALL) ALL"
 sudo_sudoers_config_os: []
 sudo_sudoers_config_system: []
 sudo_sudoers_config_stage: []
@@ -29,7 +29,7 @@ sudo_sudoers_config_role: []
 
 ## Users can be defined on several levels and will be concatenated
 sudo_passwordless_users_global: []
-  # - john
+# - john
 sudo_passwordless_users_os: []
 sudo_passwordless_users_system: []
 sudo_passwordless_users_stage: []
