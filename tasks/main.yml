@@ -11,7 +11,12 @@
 
 - name: "Concatenate additional sudoers Permissions Variables."
   set_fact:
-    sudo_sudoers_config: "{% if sudo_sudoers_config_global is defined %}{{ sudo_sudoers_config_global }}{% endif %}{% if sudo_sudoers_config_os is defined %}+ {{ sudo_sudoers_config_os }}{% endif %}{% if sudo_sudoers_config_system is defined %}+ {{ sudo_sudoers_config_system }}{% endif %}{% if sudo_sudoers_config_stage is defined %}+ {{ sudo_sudoers_config_stage }}{% endif %}{% if sudo_sudoers_config_role is defined %}+ {{ sudo_sudoers_config_role }}{% endif %}"
+    sudo_sudoers_config: >-
+      {{ sudo_sudoers_config_global | default('') | list  +
+      sudo_sudoers_config_os | default('') | list  +
+      sudo_sudoers_config_system | default('') | list  +
+      sudo_sudoers_config_stage | default('') | list  +
+      sudo_sudoers_config_role | default('') | list }}
 
 - name: "Configure main sudo Configuration."
   lineinfile:
@@ -19,7 +24,7 @@
     line: "{{ item.line }}"
     regexp: "{{ item.regex }}"
     state: "{{ item.state }}"
-    backup: true
+    backup: 'true'
     insertbefore: '.*includedir.*'
     validate: 'visudo -cf %s'
   with_items: "{{ sudo_defaults }}"
