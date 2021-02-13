@@ -1,6 +1,6 @@
 ---
 - name: "Preflight - Fail if target host is not stable for this Role."
-  fail:
+  ansible.builtin.fail:
     msg: "This role is not stable for the target operating system, {{ ansible_distribution }} {{ ansible_distribution_major_version }}."
   when: (ansible_distribution is not defined) or
         (ansible_distribution_version is not defined) or
@@ -10,7 +10,7 @@
   include_vars: "{{ ansible_os_family }}.yml"
 
 - name: "Concatenate additional sudoers Permissions Variables."
-  set_fact:
+  ansible.builtin.set_fact:
     sudo_sudoers_config: >-
       {{ sudo_sudoers_config_global | default('') | list  +
       sudo_sudoers_config_os | default('') | list  +
@@ -19,7 +19,7 @@
       sudo_sudoers_config_role | default('') | list }}
 
 - name: "Configure main sudo Configuration."
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/sudoers
     line: "{{ item.line }}"
     regexp: "{{ item.regex }}"
@@ -30,7 +30,7 @@
   with_items: "{{ sudo_defaults }}"
 
 - name: "Configure passwordless sudoers Permissions."
-  template:
+  ansible.builtin.template:
     dest: /etc/sudoers.d/passwordless_sudoers
     src: passwordless_sudoers.j2
     mode: 0440
@@ -39,7 +39,7 @@
     validate: 'visudo -cf %s'
 
 - name: "Add additional sudoers Permissions."
-  template:
+  ansible.builtin.template:
     dest: "/etc/sudoers.d/{{ item.filename }}"
     src: custom_sudoers.j2
     mode: 0440
@@ -51,7 +51,7 @@
     - "{{ sudo_sudoers_config }}"
 
 - name: "Remove additional sudoers Permissions."
-  file:
+  ansible.builtin.file:
     path: "/etc/sudoers.d/{{ item.filename }}"
     state: "{{ item.state }}"
   when: sudo_sudoers_config is defined and item.state == "absent"
