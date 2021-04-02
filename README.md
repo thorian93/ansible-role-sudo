@@ -28,7 +28,7 @@ No special requirements; note that this role requires root access, so either run
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
     sudo_sudoers_config_global: []
-      # - filename:
+      # - filename: sudoers_config
       #   state: present
       #   lines:
       #     - "root	ALL=(ALL:ALL) ALL"

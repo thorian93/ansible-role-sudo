@@ -40,7 +40,7 @@
 
 - name: "Add additional sudoers Permissions."
   ansible.builtin.template:
-    dest: "/etc/sudoers.d/{{ item.filename }}"
+    dest: "/etc/sudoers.d/{{ item.filename | default('custom_sudoers') }}"
     src: custom_sudoers.j2
     mode: 0440
     owner: root

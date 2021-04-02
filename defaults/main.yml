@@ -16,8 +16,9 @@ sudo_stable_os:
   - Ubuntu 20
 
 ## Custom sudoers config can be defined on several levels and will be concatenated
+## Make sure to use a filename you recognize
 sudo_sudoers_config_global: []
-# - filename:
+# - filename: sudoers_config
 #   state: present
 #   lines:
 #     - "root	ALL=(ALL:ALL) ALL"
