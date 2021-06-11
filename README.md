@@ -20,7 +20,7 @@ No special requirements; note that this role requires root access, so either run
 
     - hosts: foobar
       roles:
-        - role: ansible-role-sudo
+        - role: thorian93.sudo
           become: yes
 
 ## Role Variables
