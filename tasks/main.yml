@@ -24,7 +24,7 @@
     line: "{{ item.line }}"
     regexp: "{{ item.regex }}"
     state: "{{ item.state }}"
-    backup: 'true'
+    backup: true
     insertbefore: '.*includedir.*'
     validate: 'visudo -cf %s'
   with_items: "{{ sudo_defaults }}"

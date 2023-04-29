@@ -1,5 +1,14 @@
 # Ansible Role: Sudo
 
+---
+
+## Unmaintained! Moved to collection!
+This role has moved to my [**main** collection](https://github.com/thorian93/main).  
+It is **not** maintained here anymore!  
+Head over to the [collection](https://github.com/thorian93/main) for up to date content.
+
+---
+
 [![Ansible Role: Sudo](https://img.shields.io/ansible/role/55145?style=flat-square)](https://galaxy.ansible.com/thorian93/sudo)
 [![Ansible Role: Sudo](https://img.shields.io/ansible/quality/55145?style=flat-square)](https://galaxy.ansible.com/thorian93/sudo)
 [![Ansible Role: Sudo](https://img.shields.io/ansible/role/d/55145?style=flat-square)](https://galaxy.ansible.com/thorian93/sudo)
